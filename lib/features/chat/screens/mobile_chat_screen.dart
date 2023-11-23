@@ -4,6 +4,23 @@ import 'package:silent_chat/features/chat/widgets/buttom_chat_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../auth/controller/auth_controller.dart';
+import 'package:agora_rtc_engine/agora_rtc_engine.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+Future<void> _initAgoraRtcEngine() async {
+  await Permission.camera.request();
+  await Permission.microphone.request();
+
+  await AgoraRtcEngine.create(APP_ID);
+  await AgoraRtcEngine.enableVideo();
+
+  // Additional Agora setup...
+}
+
+const APP_ID =
+    '92d678cd711b4114b139592a3f494d98'; // Replace with your actual App ID
+const Token =
+    '9022c97d07df47698541ba75dfe6bf1e'; // Replace with your actual token
 
 class MobileChatScreen extends ConsumerWidget {
   static const String routeName = '/Mobile_chatScreen';
@@ -14,6 +31,7 @@ class MobileChatScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    _initAgoraRtcEngine();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: appBarColor,
