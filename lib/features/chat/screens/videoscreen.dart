@@ -11,10 +11,8 @@ class VideoCallScreen extends StatefulWidget {
   _VideoCallScreenState createState() => _VideoCallScreenState();
 }
 
-const appId =
-    '92d678cd711b4114b139592a3f494d98'; // Replace with your actual App ID
-const token =
-    '9022c97d07df47698541ba75dfe6bf1e'; // Replace with your actual token
+const appId = ''; // Replace with your actual App ID
+const token = ''; // Replace with your actual token
 const channel = "<-- Insert Channel Name -->";
 
 class _VideoCallScreenState extends State<VideoCallScreen> {
